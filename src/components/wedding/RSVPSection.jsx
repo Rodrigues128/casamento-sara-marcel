@@ -11,6 +11,7 @@ import { Check, Heart, Loader2 } from 'lucide-react';
 export default function RSVPSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
   
   const initialFormState = {
     guest_name: '',
@@ -25,6 +26,7 @@ export default function RSVPSection() {
   const handleReset = () => {
     setSubmitted(false);
     setForm(initialFormState);
+    setPhoneError('');
   };
 
   // Volta para o formulário após 10 segundos de confirmação
@@ -38,8 +40,34 @@ export default function RSVPSection() {
     return () => clearTimeout(timer);
   }, [submitted]);
 
+  // Máscara para telefone (XX) XXXXX-XXXX
+  const formatPhoneNumber = (value) => {
+    if (!value) return value;
+    const phoneNumber = value.replace(/[^\d]/g, '');
+    const phoneNumberLength = phoneNumber.length;
+    if (phoneNumberLength < 3) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2)}`;
+    }
+    return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 11)}`;
+  };
+
+  const handlePhoneChange = (e) => {
+    const formattedValue = formatPhoneNumber(e.target.value);
+    setForm({ ...form, phone: formattedValue });
+    if (phoneError) setPhoneError('');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validação básica de telefone (mínimo 10 ou 11 dígitos)
+    const rawPhone = form.phone.replace(/[^\d]/g, '');
+    if (rawPhone.length < 10) {
+      setPhoneError('Por favor, insira um telefone válido com DDD');
+      return;
+    }
+
     setLoading(true);
 
     // Formata a mensagem para o WhatsApp
@@ -135,9 +163,10 @@ export default function RSVPSection() {
               required
               type="tel"
               value={form.phone}
-              onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              className="bg-background border-border/60 font-body text-base h-12 focus:border-primary"
+              onChange={handlePhoneChange}
+              className={`bg-background border-border/60 font-body text-base h-12 focus:border-primary ${phoneError ? 'border-red-500 focus:border-red-500' : ''}`}
               placeholder="(67) 99999-9999" />
+            {phoneError && <p className="text-red-500 text-[10px] mt-1 uppercase tracking-wider">{phoneError}</p>}
           </div>
 
           {/* Attendance */}

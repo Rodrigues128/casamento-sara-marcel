@@ -1,6 +1,14 @@
 import { motion } from "framer-motion";
 
 export default function HeroSection({ heroImage, dividerImage }) {
+  const scrollToRSVP = (e) => {
+    e.preventDefault();
+    const element = document.getElementById('rsvp');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -65,6 +73,7 @@ export default function HeroSection({ heroImage, dividerImage }) {
         >
           <a
             href="#rsvp"
+            onClick={scrollToRSVP}
             className="inline-block font-sans text-xs tracking-[0.3em] uppercase px-8 py-3 border border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 font-bold"
           >
             Confirmar Presença
@@ -77,7 +86,8 @@ export default function HeroSection({ heroImage, dividerImage }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        onClick={scrollToRSVP}
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

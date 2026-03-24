@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Church } from 'lucide-react';
+import { MapPin, Clock, Church, Calendar } from 'lucide-react';
 
 const events = [
   {
     icon: Church,
-    title: 'Cerimônia',
+    title: 'Cerimônia & Recepção',
     time: '16:30',
     location: 'Muralha evento',
     address: 'R. dos Andradas, 668 - Vila Duque de Caxias, Campo Grande - MS',
@@ -13,6 +13,10 @@ const events = [
 ];
 
 export default function EventDetailsSection({ dividerImage }) {
+  // Link do Google Calendar: 09/05/2026 às 16:30 (Horário MS: UTC-4)
+  // Início: 20260509T203000Z | Fim: 20260510T023000Z (6h de evento)
+  const calendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE&text=Casamento+Sara+&+Marcel&details=Temos+a+alegria+de+convidar+você+para+o+nosso+casamento!&location=Muralha+evento+-+R.+dos+Andradas,+668+-+Vila+Duque+de+Caxias,+Campo+Grande+-+MS&dates=20260509T203000Z/20260510T023000Z";
+
   return (
     <section className="py-24 md:py-32 px-6 text-center">
       <div className="max-w-4xl mx-auto">
@@ -29,10 +33,12 @@ export default function EventDetailsSection({ dividerImage }) {
           <h2 className="font-display text-3xl md:text-5xl text-foreground">
             Informações do Evento
           </h2>
-        
+          <p className="font-body text-lg text-muted-foreground mt-4">
+            A celebração completa será realizada no mesmo local.
+          </p>
         </motion.div>
 
-        <div className="flex justify-center">
+        <div className="flex flex-col items-center justify-center">
           {events.map((event, index) => (
             <motion.div
               key={index}
@@ -71,6 +77,25 @@ export default function EventDetailsSection({ dividerImage }) {
               </div>
             </motion.div>
           ))}
+
+          {/* Botão Salvar na Agenda */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-12"
+          >
+            <a 
+              href={calendarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-sans text-[10px] tracking-[0.2em] uppercase px-6 py-3 border border-primary/20 text-muted-foreground hover:bg-primary/5 hover:text-primary transition-all duration-300 rounded-full"
+            >
+              <Calendar className="w-3 h-3" />
+              Salvar na minha Agenda
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>

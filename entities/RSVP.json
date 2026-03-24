@@ -1,0 +1,43 @@
+{
+  "name": "RSVP",
+  "type": "object",
+  "properties": {
+    "guest_name": {
+      "type": "string",
+      "title": "Nome do Convidado"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Telefone"
+    },
+    "attendance": {
+      "type": "string",
+      "enum": [
+        "confirmed",
+        "declined",
+        "maybe"
+      ],
+      "title": "Presen\u00e7a"
+    },
+    "companions": {
+      "type": "number",
+      "title": "Acompanhantes"
+    },
+    "dietary_restrictions": {
+      "type": "string",
+      "title": "Restri\u00e7\u00f5es Alimentares"
+    },
+    "message": {
+      "type": "string",
+      "title": "Mensagem para os Noivos"
+    }
+  },
+  "required": [
+    "guest_name",
+    "attendance"
+  ]
+}

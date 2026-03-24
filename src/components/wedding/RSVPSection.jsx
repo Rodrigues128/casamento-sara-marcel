@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Check, Heart, Loader2 } from 'lucide-react';
 import { sendToGoogleSheets, openWhatsApp } from '@/lib/rsvp-service';
+import { formatPhoneNumber } from '@/lib/utils';
 
 export default function RSVPSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -39,15 +40,6 @@ export default function RSVPSection() {
     }
     return () => clearTimeout(timer);
   }, [submitted]);
-
-  const formatPhoneNumber = (value) => {
-    if (!value) return value;
-    const phoneNumber = value.replace(/[^\d]/g, '');
-    const length = phoneNumber.length;
-    if (length < 3) return phoneNumber;
-    if (length < 7) return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2)}`;
-    return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 11)}`;
-  };
 
   const handlePhoneChange = (e) => {
     const formatted = formatPhoneNumber(e.target.value);
@@ -200,10 +192,10 @@ export default function RSVPSection() {
             <Button 
               type="submit" 
               disabled={loading} 
-              className="font-sans text-xs tracking-[0.3em] uppercase px-12 py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-500"
+              className="w-full md:w-auto font-sans text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase px-8 md:px-12 py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-500"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
-              Confirmar via WhatsApp
+              Confirmar Presença
             </Button>
           </div>
         </motion.form>

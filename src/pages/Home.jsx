@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Wedding Sections
 import HeroSection from '@/components/wedding/HeroSection';
 import CountdownSection from '@/components/wedding/CountdownSection';
 import OurStorySection from '@/components/wedding/OurStorySection';
@@ -11,7 +10,6 @@ import RSVPSection from '@/components/wedding/RSVPSection';
 import FooterSection from '@/components/wedding/FooterSection';
 import SplashScreen from '@/components/wedding/SplashScreen';
 
-// Assets
 import coupleImg from '@/assets/couple.jpeg';
 import moment1 from '@/assets/moment1.jpeg';
 import moment2 from '@/assets/moment2.jpeg';
@@ -33,7 +31,6 @@ const galleryImages = [
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
 
-  // Handle body scroll locking
   useEffect(() => {
     document.body.style.overflow = showSplash ? 'hidden' : 'unset';
     return () => {
@@ -57,7 +54,7 @@ export default function Home() {
           <CountdownSection />
           <OurStorySection coupleImage={IMAGES.couple} />
           <GallerySection images={galleryImages} />
-          <EventDetailsSection dividerImage={IMAGES.divider} />
+          <EventDetailsSection />
           <RSVPSection />
           <FooterSection />
         </motion.div>

@@ -17,11 +17,10 @@ export default function SplashScreen({ onOpen }) {
         initial={{ opacity: 1 }}
         animate={clicked ? { opacity: 0, scale: 1.04 } : { opacity: 1 }}
         transition={{ duration: 0.9, ease: 'easeInOut' }}
-        className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer select-none"
+        className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer select-none overflow-hidden"
         style={{ backgroundColor: 'hsl(82, 28%, 54%)' }}
         onClick={handleClick}
       >
-        {/* Subtle radial glow center */}
         <div
           className="absolute inset-0"
           style={{
@@ -29,24 +28,20 @@ export default function SplashScreen({ onOpen }) {
           }}
         />
 
-        {/* Envelope wrapper */}
-        <div className="relative flex flex-col items-center gap-10 z-10">
-
-          {/* Envelope */}
+        <div className="relative flex flex-col items-center gap-6 md:gap-10 z-10 w-full px-4">
+          {/* Envelope with responsive scaling */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-            className="relative"
+            className="relative scale-75 md:scale-100"
             style={{ width: 280, height: 200 }}
           >
-            {/* Envelope body */}
             <div
               className="absolute inset-0 rounded-sm shadow-2xl"
               style={{ backgroundColor: 'hsl(82, 30%, 58%)' }}
             />
 
-            {/* Left flap */}
             <div className="absolute inset-0 overflow-hidden">
               <div style={{
                 position: 'absolute', left: 0, top: 0, bottom: 0,
@@ -57,7 +52,6 @@ export default function SplashScreen({ onOpen }) {
               }} />
             </div>
 
-            {/* Right flap */}
             <div className="absolute inset-0 overflow-hidden">
               <div style={{
                 position: 'absolute', right: 0, top: 0, bottom: 0,
@@ -68,7 +62,6 @@ export default function SplashScreen({ onOpen }) {
               }} />
             </div>
 
-            {/* Bottom flap */}
             <div className="absolute inset-0 overflow-hidden">
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0,
@@ -79,7 +72,6 @@ export default function SplashScreen({ onOpen }) {
               }} />
             </div>
 
-            {/* Top flap */}
             <div className="absolute inset-0 overflow-hidden">
               <div style={{
                 position: 'absolute', top: 0, left: 0, right: 0,
@@ -90,7 +82,6 @@ export default function SplashScreen({ onOpen }) {
               }} />
             </div>
 
-            {/* Wax seal */}
             <div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full"
               style={{
@@ -100,7 +91,6 @@ export default function SplashScreen({ onOpen }) {
                 boxShadow: '0 6px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08)',
               }}
             >
-              {/* Inner ring */}
               <div
                 className="absolute rounded-full"
                 style={{
@@ -118,7 +108,7 @@ export default function SplashScreen({ onOpen }) {
             </div>
           </motion.div>
 
-          {/* Names */}
+          {/* Names with responsive text */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -126,37 +116,35 @@ export default function SplashScreen({ onOpen }) {
             className="text-center"
           >
             <h1
-              className="font-display text-4xl font-medium tracking-wide"
+              className="font-display text-3xl md:text-4xl font-medium tracking-wide"
               style={{ color: 'hsl(82, 20%, 22%)' }}
             >
-              Sara <span className="font-body italic text-2xl opacity-70">&</span> Marcel
+              Sara <span className="font-body italic text-xl md:text-2xl opacity-70">&</span> Marcel
             </h1>
             <p
-              className="font-sans text-xs tracking-[0.35em] uppercase mt-2"
+              className="font-sans text-[10px] md:text-xs tracking-[0.35em] uppercase mt-2"
               style={{ color: 'hsl(82, 18%, 30%)' }}
             >
               15 de Novembro de 2026
             </p>
           </motion.div>
 
-          {/* Divider */}
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
             className="flex items-center gap-3"
           >
-            <div className="w-12 h-px" style={{ backgroundColor: 'hsl(82, 18%, 30%)' , opacity: 0.4}} />
+            <div className="w-8 md:w-12 h-px" style={{ backgroundColor: 'hsl(82, 18%, 30%)' , opacity: 0.4}} />
             <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'hsl(82, 18%, 30%)', opacity: 0.5 }} />
-            <div className="w-12 h-px" style={{ backgroundColor: 'hsl(82, 18%, 30%)', opacity: 0.4 }} />
+            <div className="w-8 md:w-12 h-px" style={{ backgroundColor: 'hsl(82, 18%, 30%)', opacity: 0.4 }} />
           </motion.div>
 
-          {/* CTA */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 1] }}
             transition={{ duration: 1, delay: 1.1 }}
-            className="font-body italic text-lg"
+            className="font-body italic text-base md:text-lg"
             style={{ color: 'hsl(82, 18%, 28%)' }}
           >
             <motion.span

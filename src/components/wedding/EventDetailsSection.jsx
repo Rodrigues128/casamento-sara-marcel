@@ -1,20 +1,20 @@
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Church, UtensilsCrossed } from 'lucide-react';
+import { MapPin, Clock, Church, UtensilsCrossed, Info } from 'lucide-react';
 
 const events = [
   {
     icon: Church,
     title: 'Cerimônia',
     time: '16:00',
-    location: 'Igreja Nossa Senhora do Brasil',
-    address: 'Rua Marechal Bittencourt, 62 — Jardim Paulista, São Paulo',
+    location: 'Mansão das Flores',
+    address: 'Rua das Palmeiras, 123 — Jardim Europa, Campo Grande',
   },
   {
     icon: UtensilsCrossed,
     title: 'Recepção',
     time: '18:30',
-    location: 'Espaço Villa Jardim',
-    address: 'Av. Morumbi, 1234 — Morumbi, São Paulo',
+    location: 'Mansão das Flores',
+    address: 'Mesmo local da cerimônia',
   },
 ];
 
@@ -35,6 +35,9 @@ export default function EventDetailsSection({ dividerImage }) {
           <h2 className="font-display text-3xl md:text-5xl text-foreground">
             Informações do Evento
           </h2>
+          <p className="font-body text-lg text-muted-foreground mt-4">
+            A cerimônia e a recepção serão realizadas no mesmo local para sua maior comodidade.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
@@ -72,30 +75,6 @@ export default function EventDetailsSection({ dividerImage }) {
             </motion.div>
           ))}
         </div>
-
-        {/* Dress Code & Gifts */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mt-24 text-center"
-        >
-          <img src={dividerImage} alt="" className="w-48 h-8 object-cover opacity-30 mx-auto mb-12" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h4 className="font-display text-xl text-foreground mb-3">Traje</h4>
-              <p className="font-body text-lg text-muted-foreground">Esporte Fino</p>
-            </div>
-            <div>
-              <h4 className="font-display text-xl text-foreground mb-3">Presentes</h4>
-              <p className="font-body text-lg text-muted-foreground">
-                Sua presença é o nosso maior presente!
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

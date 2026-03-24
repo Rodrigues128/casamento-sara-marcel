@@ -15,7 +15,7 @@ function TimeUnit({ value, label }) {
 }
 
 export default function CountdownSection() {
-  const weddingDate = new Date('2026-11-15T16:00:00');
+  const weddingDate = new Date('2026-05-09T16:00:00');
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   function calculateTimeLeft() {

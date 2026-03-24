@@ -18,7 +18,7 @@ const timeline = [
     description: 'Em uma viagem inesquecível, sob um céu estrelado, veio o pedido mais esperado. Ela disse sim! E desde então, planejamos o dia mais feliz de nossas vidas.'
   },
   {
-    date: 'Novembro 2026',
+    date: 'Maio 2026',
     title: 'O Grande Dia',
     description: 'O momento que estávamos esperando finalmente chegou. Vamos celebrar o nosso amor com as pessoas mais especiais.'
   },

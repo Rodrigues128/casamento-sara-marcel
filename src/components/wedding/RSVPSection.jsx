@@ -137,7 +137,6 @@ export default function RSVPSection() {
               
               {[
               { value: 'confirmed', label: 'Sim, com alegria!' },
-              { value: 'maybe', label: 'Ainda não sei' },
               { value: 'declined', label: 'Infelizmente não' }].
               map((option) =>
               <label
@@ -159,38 +158,23 @@ export default function RSVPSection() {
           {form.attendance !== 'declined' &&
           <div className="space-y-2">
               <Label className="font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                Número de Acompanhantes
+                Número de Pessoas
               </Label>
               <Select
-              value={String(form.companions)}
+              value={String(form.companions || 1)}
               onValueChange={(val) => setForm({ ...form, companions: Number(val) })}>
               
                 <SelectTrigger className="bg-background border-border/60 font-body text-base h-12">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {[0, 1, 2, 3, 4].map((num) =>
+                  {[1, 2, 3, 4, 5, 6].map((num) =>
                 <SelectItem key={num} value={String(num)}>
-                      {num === 0 ? 'Nenhum' : num}
+                      {num}
                     </SelectItem>
                 )}
                 </SelectContent>
               </Select>
-            </div>
-          }
-
-          {/* Dietary */}
-          {form.attendance !== 'declined' &&
-          <div className="space-y-2">
-              <Label className="font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                Restrições Alimentares
-              </Label>
-              <Input
-              value={form.dietary_restrictions}
-              onChange={(e) => setForm({ ...form, dietary_restrictions: e.target.value })}
-              className="bg-background border-border/60 font-body text-base h-12 focus:border-primary"
-              placeholder="Vegetariano, vegano, alergias..." />
-            
             </div>
           }
 

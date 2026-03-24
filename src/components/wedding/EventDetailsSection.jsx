@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Church, UtensilsCrossed, Info } from 'lucide-react';
+import { MapPin, Clock, Church, UtensilsCrossed } from 'lucide-react';
 
 const events = [
   {
@@ -8,6 +8,7 @@ const events = [
     time: '16:00',
     location: 'Mansão das Flores',
     address: 'Rua das Palmeiras, 123 — Jardim Europa, Campo Grande',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=Mansão+das+Flores+Campo+Grande'
   },
   {
     icon: UtensilsCrossed,
@@ -15,6 +16,7 @@ const events = [
     time: '18:30',
     location: 'Mansão das Flores',
     address: 'Mesmo local da cerimônia',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=Mansão+das+Flores+Campo+Grande'
   },
 ];
 
@@ -64,13 +66,18 @@ export default function EventDetailsSection({ dividerImage }) {
                   <span className="font-body text-lg">{event.time}</span>
                 </div>
 
-                <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                  <MapPin className="w-4 h-4 text-primary/60 flex-shrink-0" />
-                  <div>
-                    <p className="font-body text-lg text-foreground/80">{event.location}</p>
-                    <p className="font-sans text-xs text-muted-foreground mt-1">{event.address}</p>
+                <a 
+                  href={event.mapUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-primary/60 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                    <p className="font-body text-lg text-foreground/80 group-hover:text-primary">{event.location}</p>
                   </div>
-                </div>
+                  <p className="font-sans text-xs text-muted-foreground mt-1 underline underline-offset-4 decoration-primary/20">{event.address}</p>
+                </a>
               </div>
             </motion.div>
           ))}

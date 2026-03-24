@@ -29,9 +29,7 @@ export default function EventDetailsSection({ dividerImage }) {
           <h2 className="font-display text-3xl md:text-5xl text-foreground">
             Informações do Evento
           </h2>
-          <p className="font-body text-lg text-muted-foreground mt-4">
-            A celebração completa será realizada no mesmo local.
-          </p>
+        
         </motion.div>
 
         <div className="flex justify-center">

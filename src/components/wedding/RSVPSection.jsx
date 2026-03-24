@@ -66,7 +66,7 @@ export default function RSVPSection() {
 
     setLoading(true);
 
-    // Códigos de URL para os emojis e formatação (Garante que nada quebre)
+    // Códigos de URL para os emojis e formatação
     const pin = "%F0%9F%93%8D"; // 📌
     const greenHeart = "%F0%9F%92%9A"; // 💚
     const redHeart = "%E2%9D%A4%EF%B8%8F"; // ❤️
@@ -75,7 +75,6 @@ export default function RSVPSection() {
 
     const attendanceText = form.attendance === 'confirmed' ? 'Sim, com alegria!' : 'Infelizmente não poderei comparecer';
     
-    // Construção manual da URL para evitar erros de codificação de arquivos
     let message = `${pin}${space}*NOVA%20CONFIRMA%C3%87%C3%83O*${space}${greenHeart}${redHeart}${nl}${nl}`;
     message += `-%20*Nome:*%20${encodeURIComponent(form.guest_name)}${nl}`;
     message += `-%20*Telefone:*%20${encodeURIComponent(form.phone)}${nl}`;
@@ -126,7 +125,7 @@ export default function RSVPSection() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-16">
           <p className="font-sans text-xs tracking-[0.4em] uppercase text-primary mb-6">RSVP</p>
           <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4">Confirme Sua Presença</h2>
-          <p className="font-body text-lg text-muted-foreground">Por favor, confirme até 25 de abril de 2026</p>
+          <p className="font-body text-lg text-muted-foreground">Por favor, confirme até 15 de abril de 2026</p>
         </motion.div>
 
         <motion.form initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} onSubmit={handleSubmit} className="space-y-8">
@@ -161,7 +160,7 @@ export default function RSVPSection() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {[1, 2, 3, 4, 5, 6].map((num) => <SelectItem key={num} value={String(num)}>{num}</SelectItem>)}
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => <SelectItem key={num} value={String(num)}>{num}</SelectItem>)}
                 </SelectContent>
               </Select>
             </div>

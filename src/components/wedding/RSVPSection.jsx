@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +19,24 @@ export default function RSVPSection() {
     message: ''
   });
 
+  // Volta para o formulário após 10 segundos de confirmação
+  useEffect(() => {
+    let timer;
+    if (submitted) {
+      timer = setTimeout(() => {
+        setSubmitted(false);
+        setForm({
+          guest_name: '',
+          phone: '',
+          attendance: 'confirmed',
+          companions: 1,
+          message: ''
+        });
+      }, 10000);
+    }
+    return () => clearTimeout(timer);
+  }, [submitted]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -32,7 +50,6 @@ export default function RSVPSection() {
       `${form.attendance === 'confirmed' ? `*Número de Pessoas:* ${form.companions}%0A` : ''}` +
       `${form.message ? `*Mensagem:* ${form.message}` : ''}`;
 
-    // Link para o seu número do WhatsApp
     const whatsappUrl = `https://wa.me/556781437611?text=${messageBody}`;
 
     window.open(whatsappUrl, '_blank');
@@ -56,10 +73,17 @@ export default function RSVPSection() {
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
             Obrigado!
           </h2>
-          <p className="font-body text-xl text-muted-foreground">
-            Sua confirmação foi preparada. Se a janela do WhatsApp não abriu automaticamente, clique no botão para enviar.
+          <p className="font-body text-xl text-muted-foreground mb-8">
+            Sua confirmação foi preparada. Você será redirecionado para o formulário em alguns segundos...
           </p>
-          <Heart className="w-6 h-6 text-primary fill-primary/20 mx-auto mt-8" />
+          <Button 
+            variant="ghost" 
+            onClick={() => setSubmitted(false)}
+            className="font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary"
+          >
+            Voltar ao formulário agora
+          </Button>
+          <Heart className="w-6 h-6 text-primary fill-primary/20 mx-auto mt-12" />
         </motion.div>
       </section>);
   }

@@ -46,7 +46,7 @@ function App() {
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
-        <Router>
+        <Router basename="/casamento-sara-marcel">
           <AuthenticatedApp />
         </Router>
         <Toaster />

@@ -5,7 +5,6 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   base: './',
-  logLevel: 'error',
   plugins: [
     react(),
   ],
@@ -14,4 +13,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-});
+  server: {
+    port: 3000,
+    open: true,
+  }
+})

@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import HeroSection from '../components/wedding/HeroSection';
-import CountdownSection from '../components/wedding/CountdownSection';
-import OurStorySection from '../components/wedding/OurStorySection';
-import GallerySection from '../components/wedding/GallerySection';
-import EventDetailsSection from '../components/wedding/EventDetailsSection';
-import RSVPSection from '../components/wedding/RSVPSection';
-import FooterSection from '../components/wedding/FooterSection';
-import SplashScreen from '../components/wedding/SplashScreen';
-import coupleImg from '../assets/couple.jpeg';
-import moment1 from '../assets/moment1.jpeg';
-import moment2 from '../assets/moment2.jpeg';
+
+// Wedding Sections
+import HeroSection from '@/components/wedding/HeroSection';
+import CountdownSection from '@/components/wedding/CountdownSection';
+import OurStorySection from '@/components/wedding/OurStorySection';
+import GallerySection from '@/components/wedding/GallerySection';
+import EventDetailsSection from '@/components/wedding/EventDetailsSection';
+import RSVPSection from '@/components/wedding/RSVPSection';
+import FooterSection from '@/components/wedding/FooterSection';
+import SplashScreen from '@/components/wedding/SplashScreen';
+
+// Assets
+import coupleImg from '@/assets/couple.jpeg';
+import moment1 from '@/assets/moment1.jpeg';
+import moment2 from '@/assets/moment2.jpeg';
 
 const IMAGES = {
   hero: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070',
@@ -29,13 +33,9 @@ const galleryImages = [
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
 
-  // Prevent scrolling while splash is active
+  // Handle body scroll locking
   useEffect(() => {
-    if (showSplash) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = showSplash ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };

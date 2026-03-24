@@ -8,6 +8,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Check, Heart, Loader2 } from 'lucide-react';
 
+// URL da sua planilha (Google Apps Script Web App URL)
+// Substitua pela URL que você obteve no Passo 1
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxpxNDlhK6mmijcRczt6cL5Zv6RlRHuMeMhRhGAERTLU7mWlFJ-DNBxy2NR_yih0c5yqQ/exec';
+
 export default function RSVPSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,6 +60,25 @@ export default function RSVPSection() {
     if (phoneError) setPhoneError('');
   };
 
+  const sendToGoogleSheets = async (formData) => {
+    if (GOOGLE_SHEETS_URL === 'SUA_URL_DO_APP_WEB_AQUI' || GOOGLE_SHEETS_URL.includes('SUA_URL')) return;
+    
+    try {
+      // Usamos text/plain para evitar problemas de CORS, 
+      // o Google Apps Script consegue ler o corpo da requisição normalmente.
+      await fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify(formData),
+      });
+    } catch (error) {
+      console.error('Erro ao enviar para a planilha:', error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const rawPhone = form.phone.replace(/[^\d]/g, '');
@@ -66,7 +89,16 @@ export default function RSVPSection() {
 
     setLoading(true);
 
-    // Códigos de URL para os emojis e formatação
+    // 1. Enviar para a planilha em segundo plano
+    await sendToGoogleSheets({
+      guest_name: form.guest_name,
+      phone: form.phone,
+      attendance: form.attendance,
+      companions: form.attendance === 'confirmed' ? form.companions : 0,
+      message: form.message
+    });
+
+    // 2. Preparar WhatsApp
     const pin = "%F0%9F%93%8D"; // 📌
     const greenHeart = "%F0%9F%92%9A"; // 💚
     const redHeart = "%E2%9D%A4%EF%B8%8F"; // ❤️

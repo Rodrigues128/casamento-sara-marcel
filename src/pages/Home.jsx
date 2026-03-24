@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import HeroSection from '../components/wedding/HeroSection';
 import CountdownSection from '../components/wedding/CountdownSection';
 import OurStorySection from '../components/wedding/OurStorySection';
@@ -5,6 +7,7 @@ import GallerySection from '../components/wedding/GallerySection';
 import EventDetailsSection from '../components/wedding/EventDetailsSection';
 import RSVPSection from '../components/wedding/RSVPSection';
 import FooterSection from '../components/wedding/FooterSection';
+import SplashScreen from '../components/wedding/SplashScreen';
 import coupleImg from '../assets/couple.jpeg';
 import moment1 from '../assets/moment1.jpeg';
 import moment2 from '../assets/moment2.jpeg';
@@ -24,15 +27,41 @@ const galleryImages = [
 ];
 
 export default function Home() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  // Prevent scrolling while splash is active
+  useEffect(() => {
+    if (showSplash) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showSplash]);
+
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
-      <HeroSection heroImage={IMAGES.hero} dividerImage={IMAGES.divider} />
-      <CountdownSection />
-      <OurStorySection coupleImage={IMAGES.couple} />
-      <GallerySection images={galleryImages} />
-      <EventDetailsSection dividerImage={IMAGES.divider} />
-      <RSVPSection />
-      <FooterSection />
-    </div>
+    <AnimatePresence mode="wait">
+      {showSplash ? (
+        <SplashScreen key="splash" onOpen={() => setShowSplash(false)} />
+      ) : (
+        <motion.div
+          key="content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          className="min-h-screen bg-background overflow-x-hidden"
+        >
+          <HeroSection heroImage={IMAGES.hero} dividerImage={IMAGES.divider} />
+          <CountdownSection />
+          <OurStorySection coupleImage={IMAGES.couple} />
+          <GallerySection images={galleryImages} />
+          <EventDetailsSection dividerImage={IMAGES.divider} />
+          <RSVPSection />
+          <FooterSection />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

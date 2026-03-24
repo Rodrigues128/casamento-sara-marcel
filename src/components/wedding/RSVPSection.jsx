@@ -70,14 +70,14 @@ export default function RSVPSection() {
 
     setLoading(true);
 
-    // Formata a mensagem para o WhatsApp
+    // Formata a mensagem para o WhatsApp conforme solicitado
     const attendanceText = form.attendance === 'confirmed' ? 'Sim, com alegria!' : 'Infelizmente não poderei comparecer';
-    const messageBody = `*Confirmação de Presença*%0A%0A` +
-      `*Nome:* ${form.guest_name}%0A` +
-      `*Telefone:* ${form.phone}%0A` +
-      `*Presença:* ${attendanceText}%0A` +
-      `${form.attendance === 'confirmed' ? `*Número de Pessoas:* ${form.companions}%0A` : ''}` +
-      `${form.message ? `*Mensagem:* ${form.message}` : ''}`;
+    const messageBody = `📌 *NOVA CONFIRMAÇÃO* 💚❤️%0A%0A` +
+      `- *Nome:* ${form.guest_name}%0A` +
+      `- *Telefone:* ${form.phone}%0A` +
+      `- *Presença:* ${attendanceText}%0A` +
+      `${form.attendance === 'confirmed' ? `- *Número de pessoas:* ${form.companions}%0A` : ''}` +
+      `${form.message ? `%0A*Recado:* ${form.message}` : ''}`;
 
     const whatsappUrl = `https://wa.me/556781437611?text=${messageBody}`;
 

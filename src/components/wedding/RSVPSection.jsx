@@ -147,13 +147,13 @@ export default function RSVPSection() {
           
           {/* Name */}
           <div className="space-y-2">
-            <Label className="font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground">Nome da família *</Label>
+            <Label className="font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground">Nome do Representante da Família *</Label>
             <Input
               required
               value={form.guest_name}
               onChange={(e) => setForm({ ...form, guest_name: e.target.value })}
               className="bg-background border-border/60 font-body text-base h-12 focus:border-primary"
-              placeholder="Ex: Família Silva" />
+              placeholder="Exemplo: Paulo Henrique Rodrigues Correa" />
           </div>
 
           {/* Phone */}

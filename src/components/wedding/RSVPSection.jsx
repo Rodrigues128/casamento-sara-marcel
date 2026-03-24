@@ -11,27 +11,28 @@ import { Check, Heart, Loader2 } from 'lucide-react';
 export default function RSVPSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
+  
+  const initialFormState = {
     guest_name: '',
     phone: '',
     attendance: 'confirmed',
     companions: 1,
     message: ''
-  });
+  };
+
+  const [form, setForm] = useState(initialFormState);
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setForm(initialFormState);
+  };
 
   // Volta para o formulário após 10 segundos de confirmação
   useEffect(() => {
     let timer;
     if (submitted) {
       timer = setTimeout(() => {
-        setSubmitted(false);
-        setForm({
-          guest_name: '',
-          phone: '',
-          attendance: 'confirmed',
-          companions: 1,
-          message: ''
-        });
+        handleReset();
       }, 10000);
     }
     return () => clearTimeout(timer);
@@ -78,7 +79,7 @@ export default function RSVPSection() {
           </p>
           <Button 
             variant="ghost" 
-            onClick={() => setSubmitted(false)}
+            onClick={handleReset}
             className="font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary"
           >
             Voltar ao formulário agora

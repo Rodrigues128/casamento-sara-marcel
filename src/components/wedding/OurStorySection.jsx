@@ -3,24 +3,29 @@ import { Heart } from 'lucide-react';
 
 const timeline = [
   {
-    date: 'Março 2019',
-    title: 'Nos Conhecemos',
-    description: 'Um encontro casual em uma cafeteria que mudou nossas vidas para sempre. Os olhares se cruzaram e soubemos que algo especial estava começando.'
+    date: '24 de Fevereiro de 2024',
+    title: 'O Primeiro Olhar (e um UNO)',
+    description: 'Nos conhecemos em um aniversário, apresentados por um primo. A conversa foi breve, mas memorável: uma acusação bem-humorada de "você roubou, né?" durante um jogo de UNO foi o suficiente para despertar nossa curiosidade.'
   },
   {
-    date: 'Junho 2020',
-    title: 'Primeiro Namoro',
-    description: 'Depois de meses de amizade, decidimos dar o próximo passo. Um jantar à luz de velas selou o início da nossa linda história de amor.'
+    date: 'Fevereiro de 2024',
+    title: 'Propósitos que se Cruzam',
+    description: 'Um "follow" no Instagram no dia seguinte abriu as portas para conversas profundas. Descobrimos afinidades, encontros na igreja e, acima de tudo, o mesmo desejo de servir a Deus. Decidimos orar, entregando nossos caminhos ao Senhor antes de qualquer passo.'
   },
   {
-    date: 'Dezembro 2024',
-    title: 'O Pedido',
-    description: 'Em uma viagem inesquecível, sob um céu estrelado, veio o pedido mais esperado. Ela disse sim! E desde então, planejamos o dia mais feliz de nossas vidas.'
+    date: '16 de Março de 2024',
+    title: 'O Sim para o Namoro',
+    description: 'Com o coração acelerado e diante da família na casa dela, o pedido de namoro foi oficializado. Entre o nervosismo e a emoção, o "sim" veio com a certeza de que ali começava algo eterno, já com o olhar voltado para o altar.'
   },
   {
-    date: 'Maio 2026',
+    date: '05 de Maio de 2025',
+    title: 'O Noivado Surpresa',
+    description: 'Após um ano e um mês de caminhada, o grande passo. Em uma surpresa emocionante que reuniu nossas famílias, o pedido de casamento foi feito. Deus confirmou mais uma vez que fomos feitos um para o outro.'
+  },
+  {
+    date: '09 de Maio de 2026',
     title: 'O Grande Dia',
-    description: 'O momento que estávamos esperando finalmente chegou. Vamos celebrar o nosso amor com as pessoas mais especiais.'
+    description: 'O momento de selar nossa união diante de Deus e dos homens. O que começou com uma jogada de cartas termina com a promessa de uma vida inteira de amor e fidelidade.'
   },
 ];
 
@@ -79,8 +84,8 @@ export default function OurStorySection({ coupleImage }) {
                   <div className="w-2.5 h-2.5 rounded-full bg-primary border-4 border-background" />
                 </div>
 
-                <div className={`pl-10 md:pl-0 md:w-1/2 ${
-                  index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'
+                <div className={`pl-12 md:pl-0 md:w-1/2 ${
+                  index % 2 === 0 ? 'md:pr-24 md:text-right' : 'md:pl-24'
                 }`}>
                   <span className="font-sans text-[10px] md:text-xs tracking-[0.3em] uppercase text-primary">
                     {item.date}

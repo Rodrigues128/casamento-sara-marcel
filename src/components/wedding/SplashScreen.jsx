@@ -125,7 +125,7 @@ export default function SplashScreen({ onOpen }) {
               className="font-sans text-[10px] md:text-xs tracking-[0.35em] uppercase mt-2"
               style={{ color: 'hsl(82, 18%, 30%)' }}
             >
-              15 de Novembro de 2026
+              9 de Maio de 2026
             </p>
           </motion.div>
 

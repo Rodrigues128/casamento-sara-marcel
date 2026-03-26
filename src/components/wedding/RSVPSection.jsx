@@ -147,15 +147,15 @@ export default function RSVPSection() {
           </div>
 
           <div className="space-y-4">
-            <Label className="font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground">Você poderá comparecer? *</Label>
-            <RadioGroup value={form.attendance} onValueChange={(val) => setForm({ ...form, attendance: val })} className="flex flex-col sm:flex-row gap-4">
+            <Label className="font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground">Você poderá comparecer? *</Label>        
+            <RadioGroup value={form.attendance} onValueChange={(val) => setForm({ ...form, attendance: val })} className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {[
-                { value: 'confirmed', label: 'Sim, com alegria!' }, 
+                { value: 'confirmed', label: 'Sim, com alegria!' },
                 { value: 'declined', label: 'Infelizmente não' }
               ].map((option) =>
-                <label 
-                  key={option.value} 
-                  className={`flex items-center gap-3 px-4 py-3 border cursor-pointer transition-all duration-300 ${form.attendance === option.value ? 'border-primary bg-primary/5' : 'border-border/60 hover:border-primary/40'}`}
+                <label
+                  key={option.value}
+                  className={`flex items-center gap-3 px-4 py-4 border cursor-pointer transition-all duration-300 rounded-lg ${form.attendance === option.value ? 'border-primary bg-primary/5' : 'border-border/60 hover:border-primary/40'}`}
                 >
                   <RadioGroupItem value={option.value} />
                   <span className="font-body text-base">{option.label}</span>
@@ -163,6 +163,7 @@ export default function RSVPSection() {
               )}
             </RadioGroup>
           </div>
+
 
           {form.attendance !== 'declined' &&
             <div className="space-y-2">

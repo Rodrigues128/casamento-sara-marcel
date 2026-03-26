@@ -28,13 +28,13 @@ export default function SplashScreen({ onOpen }) {
           }}
         />
 
-        <div className="relative flex flex-col items-center gap-6 md:gap-10 z-10 w-full px-4">
+        <div className="relative flex flex-col items-center gap-8 md:gap-10 z-10 w-full px-6">
           {/* Envelope with responsive scaling */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-            className="relative scale-75 md:scale-100"
+            className="relative scale-[0.65] xs:scale-75 md:scale-100"
             style={{ width: 280, height: 200 }}
           >
             <div
@@ -83,7 +83,7 @@ export default function SplashScreen({ onOpen }) {
             </div>
 
             <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full"     
               style={{
                 width: 72,
                 height: 72,
@@ -116,13 +116,13 @@ export default function SplashScreen({ onOpen }) {
             className="text-center"
           >
             <h1
-              className="font-display text-3xl md:text-4xl font-medium tracking-wide"
+              className="font-display text-3xl md:text-5xl font-medium tracking-wide"
               style={{ color: 'hsl(82, 20%, 22%)' }}
             >
-              Sara <span className="font-body italic text-xl md:text-2xl opacity-70">&</span> Marcel
+              Sara <span className="font-body italic text-2xl md:text-3xl opacity-70">&</span> Marcel
             </h1>
             <p
-              className="font-sans text-[10px] md:text-xs tracking-[0.35em] uppercase mt-2"
+              className="font-sans text-[10px] md:text-sm tracking-[0.35em] uppercase mt-4"
               style={{ color: 'hsl(82, 18%, 30%)' }}
             >
               9 de Maio de 2026
@@ -135,20 +135,20 @@ export default function SplashScreen({ onOpen }) {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="flex items-center gap-3"
           >
-            <div className="w-8 md:w-12 h-px" style={{ backgroundColor: 'hsl(82, 18%, 30%)' , opacity: 0.4}} />
+            <div className="w-8 md:w-16 h-px" style={{ backgroundColor: 'hsl(82, 18%, 30%)' , opacity: 0.4}} />
             <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'hsl(82, 18%, 30%)', opacity: 0.5 }} />
-            <div className="w-8 md:w-12 h-px" style={{ backgroundColor: 'hsl(82, 18%, 30%)', opacity: 0.4 }} />
+            <div className="w-8 md:w-16 h-px" style={{ backgroundColor: 'hsl(82, 18%, 30%)', opacity: 0.4 }} />
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 1] }}
             transition={{ duration: 1, delay: 1.1 }}
-            className="font-body italic text-base md:text-lg"
+            className="font-body italic text-lg md:text-xl"
             style={{ color: 'hsl(82, 18%, 28%)' }}
           >
             <motion.span
-              animate={{ opacity: [0.5, 1, 0.5] }}
+              animate={{ opacity: [0.6, 1, 0.6] }}
               transition={{ repeat: Infinity, duration: 2.5 }}
             >
               Clique para abrir o convite
@@ -159,3 +159,4 @@ export default function SplashScreen({ onOpen }) {
     </AnimatePresence>
   );
 }
+

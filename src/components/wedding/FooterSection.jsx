@@ -20,7 +20,7 @@ export default function FooterSection() {
             <div className="w-8 h-px bg-primary/30" />
           </div>
           <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
-            © 2026 • Feito por Paulo Henrique
+            © 2026 • Feito por PAGH Tecnologias
           </p>
         </motion.div>
       </div>

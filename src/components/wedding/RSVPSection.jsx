@@ -129,7 +129,7 @@ export default function RSVPSection() {
               value={form.guest_name} 
               onChange={(e) => setForm({ ...form, guest_name: e.target.value })} 
               className="bg-background border-border/60 font-body text-base h-12 focus:border-primary" 
-              placeholder="Exemplo: Paulo Henrique Rodrigues Correa" 
+              placeholder="Exemplo: José Correa" 
             />
           </div>
 

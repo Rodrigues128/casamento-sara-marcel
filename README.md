@@ -1,14 +1,14 @@
-# 💍 Convite de Casamento Interativo
+# 💍 Convite de Casamento Interativo - Sara & Marcel
 
 Este projeto é um convite de casamento digital, moderno e de alta performance, construído com **React**, **Framer Motion** e uma arquitetura **Serverless** para o backend.
 
 ## 🚀 Tecnologias e Decisões de Arquitetura
 
 ### Frontend
-- **React (Vite)**: Escolhido pela performance de build e experiência de desenvolvimento fluida.
-- **Tailwind CSS**: Estilização baseada em utilitários para garantir design consistente e responsivo.
+- **React (Vite)**: Escolhido pela performance de build e experiência de desenvolvimento fluida, agora utilizando **ES Modules**.
+- **Tailwind CSS**: Estilização baseada em utilitários para garantir design consistente e responsivo, 100% otimizado para **Mobile-First**.
 - **Framer Motion**: Experiência imersiva com animações de abertura (Envelope Splash Screen) e transições suaves entre seções.
-- **Shadcn/UI**: Componentes de UI acessíveis e altamente customizáveis.
+- **Shadcn/UI**: Componentes de UI acessíveis e leves, mantendo apenas o necessário para o projeto.
 - **Lucide React**: Conjunto de ícones leves e consistentes.
 
 ### Backend (Serverless Integration)
@@ -19,11 +19,12 @@ Este projeto é um convite de casamento digital, moderno e de alta performance, 
 ## ✨ Funcionalidades (Features)
 
 - [x] **Splash Screen Imersiva**: Animação de abertura de envelope que bloqueia o scroll até a interação do usuário.
-- [x] **Contagem Regressiva**: Timer dinâmico atualizado em tempo real até a data do evento.
+- [x] **Favicon Personalizado**: Ícone exclusivo com as iniciais **S & M** na aba do navegador.
+- [x] **Contagem Regressiva**: Timer dinâmico atualizado em tempo real até a data do evento (09/05/2026).
 - [x] **Galeria Responsiva**: Exibição otimizada de fotos com efeitos de hover e zoom.
-- [x] **RSVP Inteligente**: Formulário com máscara de telefone automática e validação de campos obrigatórios.
+- [x] **RSVP Inteligente**: Formulário com máscara de telefone automática e botões otimizados para toque no celular.
 - [x] **Sincronização Dupla**: Os dados são salvos em uma planilha e uma mensagem é preparada para o WhatsApp simultaneamente.
-- [x] **SEO & Social Share**: Configuração de Open Graph para que o link exiba foto e descrição personalizada ao ser compartilhado.
+- [x] **SEO & Social Share**: Configuração de Open Graph para que o link exiba foto e descrição personalizada ao ser compartilhado.      
 
 ## 📂 Estrutura do Projeto
 
@@ -68,4 +69,4 @@ O projeto está configurado para deploy automático no **GitHub Pages**.
 **Importante**: Ao realizar o deploy, garanta que a variável `VITE_GOOGLE_SHEETS_URL` esteja configurada nos **Secrets** do seu repositório GitHub para que o formulário funcione na versão online.
 
 ---
-Desenvolvido por **Paulo Henrique** • [Seu LinkedIn/Portfólio aqui]
+Desenvolvido por **PAGH Tecnologias** 💍 

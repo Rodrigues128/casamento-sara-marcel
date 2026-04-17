@@ -111,7 +111,6 @@ export default function RSVPSection() {
         >
           <p className="font-sans text-xs tracking-[0.4em] uppercase text-primary mb-6">RSVP</p>
           <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4">Confirme Sua Presença</h2>
-          <p className="font-body text-lg text-muted-foreground">Por favor, confirme até 15 de abril de 2026</p>
         </motion.div>
 
         <motion.form 
